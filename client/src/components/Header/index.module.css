@@ -1,0 +1,61 @@
+.banner {
+    font-family:"Brush Script MT", cursive;
+    font-size: 64px;
+    color: azure;
+    height: 13vh;
+    background: no-repeat 0px -500px/100% url("https://images.pixexid.com/mercedes-amg-gt-powerful-silhouette-accentuated-by-low-key-lighting-xion5piw.jpeg");  
+}
+
+.banner p {
+    padding: 10px 0 0 20px;
+}
+
+.logo {
+    margin: 0px 10px;
+    height: 3.4rem;
+}
+
+.header {
+    background-color: black;
+    height: 20vh;
+    width: 100%;
+    overflow: hidden;
+    color: azure;
+    position: relative;
+    /* padding-top: 10px; */
+}
+
+
+.header h1 {
+    display: inline-block;
+    background-color: #29303c;
+    color: azure;
+    margin-bottom: auto;
+}
+
+.header nav {
+    margin-top: 10px;
+    text-transform: capitalize;
+    font-size: 1.3rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.header nav>a {
+    text-decoration: none;
+    color: azure;
+    /* background-color:#29303c; */
+    /* float: left; */
+    text-transform: uppercase;
+    padding: 1rem;
+    transition: ease-in 0.4s;
+    border-radius: 15px 5px 0px 0px;
+
+}
+
+.header nav>a:hover {
+    padding: 1rem;
+    /* color: #29303c; */
+    color: rgb(255, 29, 79);
+    background-color: rgba(120, 26, 26, 0.963);
+    transition: ease-in 0.4s;
+}
