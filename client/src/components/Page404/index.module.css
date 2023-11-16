@@ -1,0 +1,17 @@
+.notFound {
+    background: no-repeat 0px  url("https://pix.avax.news/avaxnews/fc/e7/0001e7fc.jpeg");  
+    background-size: cover;
+    min-height: 65vh;
+}
+
+.notFound h1 {
+    text-align: center;
+    font-size: 8rem;
+    color:azure;
+}
+
+.notFound h2 {
+    text-align: center;
+    font-size: 4rem;
+    color:azure;
+}
