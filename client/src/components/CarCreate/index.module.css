@@ -6,9 +6,33 @@
 
 .container {
     background-color: brown;
+    max-width: 25vw;
+    margin: 0 auto;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    padding: 25px;
+    color: azure;
+    border-radius: 2px;
+}
+
+.container h1 {
+    text-align: center;
+    font-family:'Times New Roman', Times, serif;
+    font-weight: bolder;
+}
+
+.container label, input, select {
+    margin: 0 auto;
+    width: 15vw;
 }
 
 .submitBtn {
-    color:azure;
+    margin-top: 10px;
+    color: azure;
+    width: 110px;
     background-color: rgb(22, 21, 21);
 }
