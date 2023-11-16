@@ -1,12 +1,13 @@
 .banner {
-    font-family:"Brush Script MT", cursive;
-    font-size: 64px;
-    color: azure;
     height: 13vh;
-    background: no-repeat 0px -500px/100% url("https://images.pixexid.com/mercedes-amg-gt-powerful-silhouette-accentuated-by-low-key-lighting-xion5piw.jpeg");  
+    background: no-repeat fixed 0px -450px url("https://images.pixexid.com/mercedes-amg-gt-powerful-silhouette-accentuated-by-low-key-lighting-xion5piw.jpeg");  
+    background-size: cover;
 }
 
 .banner p {
+    font-family:"Brush Script MT", cursive;
+    font-size: 64px;
+    color: azure;
     padding: 10px 0 0 20px;
 }
 
