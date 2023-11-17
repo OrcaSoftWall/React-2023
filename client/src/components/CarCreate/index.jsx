@@ -2,7 +2,7 @@ import styles from './index.module.css';
 
 function CarCreate() {
     return (
-        <section className={styles.cardCreate}>
+        <section className={styles.carCreate}>
             <form id='create'>
                 <div className={styles.container}>
                     <h1>Add a Silk Car</h1>

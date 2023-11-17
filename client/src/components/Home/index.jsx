@@ -1,11 +1,11 @@
 import CarCreate from '../CarCreate';
-import Gallery from '../Gallery';
+import Login from '../Login';
 import styles from './index.module.css';
 
 function Home() {
     return (
         <div className={styles.home}>
-            <h1>Home</h1>
+            {/* <h1>Home</h1> */}
             <CarCreate />
         </div>
 
