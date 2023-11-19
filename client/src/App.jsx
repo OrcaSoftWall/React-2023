@@ -8,6 +8,7 @@ import { Routes, Route } from 'react-router-dom'
 import CarCreate from './components/CarCreate'
 import Login from './components/Login'
 import About from './components/About'
+import Register from './components/Register'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/create" element={<CarCreate />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/add-car" element={<CarCreate />} />
         <Route path="*" element={<Page404 />} />
       </Routes>

@@ -1,5 +1,6 @@
 .notFound {
-    background: no-repeat 0px  url("https://pix.avax.news/avaxnews/fc/e7/0001e7fc.jpeg");  
+    /* background: no-repeat 0px  url("https://pix.avax.news/avaxnews/fc/e7/0001e7fc.jpeg");   */
+    background: no-repeat 0px  url("../../images/404.jpg");  
     background-size: cover;
     min-height: 65vh;
 }

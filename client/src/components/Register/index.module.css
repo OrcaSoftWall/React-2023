@@ -24,11 +24,13 @@
 
 .container h1 {
     text-align: center;
-    font-family:'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, serif;
     font-weight: bolder;
 }
 
-.container label, input, select {
+.container label,
+input,
+select {
     margin: 0 auto;
     width: 15vw;
 }
