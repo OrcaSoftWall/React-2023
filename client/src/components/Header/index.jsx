@@ -17,6 +17,7 @@ function Header() {
                 <Link to='/gallery'>Gallery</Link>
                 <Link to='/about'>About</Link>
                 <Link to='/login'>Login</Link>
+                <Link to='/add-car'>Add a car</Link>
             </nav>
         </div>
 

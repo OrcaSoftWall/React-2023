@@ -19,6 +19,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/create" element={<CarCreate />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/add-car" element={<CarCreate />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
       <Footer />
