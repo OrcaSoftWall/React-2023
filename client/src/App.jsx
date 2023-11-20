@@ -16,7 +16,7 @@ import Path from './paths'
 
 function App() {
   const navigate = useNavigate();
-  const [auth, setAuth] = useState({});
+  const [auth, setAuth] = useState(() => { });
 
   const loginSubmitHandler = async (values) => {
     console.log(values);
@@ -26,19 +26,19 @@ function App() {
     navigate(Path.Home);
   };
 
-const registerSubmitHandler = async (values) => {
+  const registerSubmitHandler = async (values) => {
+    console.log(values);
+
+    
+  }
 
 
-  
-}
-
-
-const values = { 
-  loginSubmitHandler, 
-  username: auth.username,
-  email: auth.email,
-  isAuthenticated: !!auth.username
- }
+  const values = {
+    loginSubmitHandler,
+    username: auth.username || auth.email,
+    email: auth.email,
+    isAuthenticated: !!auth.email
+  }
 
   return (
     <AuthContext.Provider value={values}>

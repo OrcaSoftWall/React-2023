@@ -23,6 +23,7 @@ function Header() {
                         <Link to='/gallery'>Gallery</Link>
                         <Link to='/about'>About</Link>
                         <Link to='/login'>Login</Link>
+                        <Link to='/logout'>Logout</Link>
                         {/* <Link to='/register'>Register</Link> */}
                         <Link to='/add-car'>Add a car</Link>
                     </>
@@ -33,6 +34,7 @@ function Header() {
                         <Link to='/gallery'>Gallery</Link>
                         <Link to='/about'>About</Link>
                         <Link to='/login'>Login</Link>
+                        <Link to='/logout'>Logout</Link>
                         {/* <Link to='/register'>Register</Link> */}
                         <Link to='/add-car'>Add a car</Link>
                     </>
