@@ -9,8 +9,17 @@ import CarCreate from './components/CarCreate'
 import Login from './components/Login'
 import About from './components/About'
 import Register from './components/Register'
+import { useState } from 'react'
 
 function App() {
+const[auth, setAuth] = useState({});
+
+const loginSubmitHandler(values) => {
+
+
+console.log(values)
+}
+
   return (
     <div >
       <Header />
@@ -19,7 +28,7 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/about" element={<About />} />
         <Route path="/create" element={<CarCreate />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login loginSubmitHandler={loginSubmitHandler}/>} />
         <Route path="/register" element={<Register />} />
         <Route path="/add-car" element={<CarCreate />} />
         <Route path="*" element={<Page404 />} />

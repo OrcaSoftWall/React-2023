@@ -2,9 +2,14 @@ import { Link } from 'react-router-dom';
 import styles from './index.module.css';
 import useForm from '../../hooks/useForm';
 
+const loginFormKeys = {
+    Email: 'email',
+    Password:'password',
+}
+
 
 function Login() {
-const {CSSFontFeatureValuesRule, onChange, onSubmit} = useForm({
+const {CSSFontFeatureValuesRule, onChange, onSubmit} = useForm(loginSubmitHandler, {
     email: '',
     password: '',
 });
@@ -16,10 +21,10 @@ const {CSSFontFeatureValuesRule, onChange, onSubmit} = useForm({
                 <div className={styles.container}>
                     <h1>Login</h1>
                     <label htmlFor='email'>Email:</label>
-                    <input type='email' id='email' name='email' placeholder='user@domain.com' onChange={onChange} value={values['email']} />
+                    <input type='email' id='email' name={loginFormKeys.Email} placeholder='user@domain.com' onChange={onChange} value={values['email']} />
 
                     <label htmlFor='login-pass'>Password:</label>
-                    <input type='password' id='login-password' name='password'  onChange={onChange} value={values['password']} />
+                    <input type='password' id='login-password' name={loginFormKeys.Passwordassword}  onChange={onChange} value={values['password']} />
 
                     <input className={styles.submitBtn} type='submit' value='Login' />
                     <p className={styles.field}>
