@@ -13,31 +13,44 @@ import { useState } from 'react'
 import AuthContext from './contexts/authContext'
 import * as authService from './services/authService'
 import Path from './paths'
+import Logout from './components/Logout'
 
 function App() {
   const navigate = useNavigate();
-  const [auth, setAuth] = useState(() => { });
+  const [auth, setAuth] = useState(() => {
+    localStorage.removeItem('accessToken');
+    return {};
+  });
 
   const loginSubmitHandler = async (values) => {
     console.log(values);
     const result = await authService.login(values.email, values.password);
     setAuth(result);
-
+    localStorage.setItem('accessToken', result.accessToken);
     navigate(Path.Home);
   };
 
   const registerSubmitHandler = async (values) => {
     console.log(values);
-
-    
+    const result = await authService.register(values.email, values.password);
+    setAuth(result);
+    localStorage.setItem('accessToken', result.accessToken);
+    navigate(Path.Home);
   }
+
+  const logoutHandler = () => {
+    setAuth({});
+    localStorage.removeItem('accessToken');
+};
 
 
   const values = {
     loginSubmitHandler,
+    registerSubmitHandler,
+    logoutHandler,
     username: auth.username || auth.email,
     email: auth.email,
-    isAuthenticated: !!auth.email
+    isAuthenticated: !!auth.accessToken,
   }
 
   return (
@@ -50,6 +63,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/create" element={<CarCreate />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={<Register />} />
           <Route path="/add-car" element={<CarCreate />} />
           <Route path="*" element={<Page404 />} />

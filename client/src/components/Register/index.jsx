@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import styles from './index.module.css';
 import AuthContext from '../../contexts/authContext';
+import useForm from '../../hooks/useForm';
 
 const registerFormKeys = {
     Email: 'email',
@@ -10,7 +11,7 @@ const registerFormKeys = {
 
 function Register() {
     const { registerSubmitHandler } = useContext(AuthContext)
-    const { } = useForm(registerSubmitHandler, {
+    const {values, onChange, onSubmit } = useForm(registerSubmitHandler, {
         [registerFormKeys.Email]: '',
         [registerFormKeys.Password]: '',
         [registerFormKeys.ConfirmPassword]: '',
@@ -18,18 +19,18 @@ function Register() {
 
 
     return (
-        <section id="login-page" className={styles.login}>
-            <form id='login'>
+        <section id="register-page" className={styles.register}>
+            <form id='register' onSubmit={onSubmit}>
                 <div className={styles.container}>
                     <h1>Register</h1>
                     <label htmlFor='email'>Email:</label>
-                    <input type='email' id='email' name='email' placeholder='user@domain.com' value={values[registerFormKeys.Email]} />
+                    <input type='email' id='email' name='email' placeholder='user@domain.com' onChange={onChange} value={values[registerFormKeys.Email]} />
 
                     <label htmlFor='register-pass'>Password:</label>
-                    <input type='password' id='register-password' name='password' value={values[registerFormKeys.Password]} />
+                    <input type='password' id='register-password' name='password' onChange={onChange} value={values[registerFormKeys.Password]} />
 
                     <label htmlFor='re-pass'>Confirm Password:</label>
-                    <input type='password' id='re-password' name='re-password' value={values[registerFormKeys.ConfirmPassword]} />
+                    <input type='password' id='re-password' name='re-password' onChange={onChange} value={values[registerFormKeys.ConfirmPassword]} />
 
                     <input className={styles.submitBtn} type='submit' value='Register' />
                 </div>
