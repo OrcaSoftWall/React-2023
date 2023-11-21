@@ -1,14 +1,27 @@
 import styles from './index.module.css';
+import { useNavigate } from 'react-router-dom';
+import * as carsService from '../../services/carsService'
 
-const createCarSubmitHandler = (e) => {
-    e.preventDefault();
 
-    const carData = Object.fromEntries(new FormData(e.currentTarget));
-    console.log(carData);
-}
 
 
 function CarCreate() {
+    const navigate = useNavigate();
+
+    const createCarSubmitHandler = async (e) => {
+        e.preventDefault();
+
+        const carData = Object.fromEntries(new FormData(e.currentTarget));
+        try {
+            const result = await carsService.create(carData);
+            console.log(result)
+            navigate('/');
+        } catch (err) {
+            // Error notification
+            console.log(err);
+        }
+    }
+
     return (
         <section className={styles.carCreate}>
             <form id='create' onSubmit={createCarSubmitHandler}>
