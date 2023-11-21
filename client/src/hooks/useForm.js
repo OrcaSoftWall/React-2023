@@ -12,10 +12,10 @@ export default function useForm(submitHandler, initialValues) {
         }))
     }
 
-const onSubmit = (e) => {
-    e.preventDefault();
-    submitHandler(values)
-}
+    const onSubmit = (e) => {
+        e.preventDefault();
+        submitHandler(values)
+    }
 
 
     return {

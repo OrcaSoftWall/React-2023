@@ -25,6 +25,7 @@ function App() {
   const loginSubmitHandler = async (values) => {
     console.log(values);
     const result = await authService.login(values.email, values.password);
+    console.log(result)
     setAuth(result);
     localStorage.setItem('accessToken', result.accessToken);
     navigate(Path.Home);

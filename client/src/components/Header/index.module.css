@@ -1,6 +1,7 @@
 .banner {
     height: 13vh;
-    background: no-repeat fixed 0px -450px url("https://images.pixexid.com/mercedes-amg-gt-powerful-silhouette-accentuated-by-low-key-lighting-xion5piw.jpeg");
+    /* background: no-repeat fixed 0px -450px url("https://images.pixexid.com/mercedes-amg-gt-powerful-silhouette-accentuated-by-low-key-lighting-xion5piw.jpeg"); */
+    background: no-repeat fixed 0px -450px url("../../images/mercedes-amg-gt-powerful-silhouette-accentuated-by-low-key-lighting-xion5piw.jpeg");
     background-size: cover;
 }
 
@@ -63,4 +64,9 @@
     color: rgb(255, 29, 79);
     background-color: rgba(120, 26, 26, 0.963);
     transition: ease-in 0.4s;
+}
+
+.span {
+    float:right;
+    margin:8px;
 }

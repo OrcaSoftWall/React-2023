@@ -6,16 +6,16 @@ import AuthContext from '../../contexts/authContext';
 
 const loginFormKeys = {
     Email: 'email',
-    Password:'password',
-}
+    Password: 'password',
+};
 
 
 function Login() {
-    const {loginSubmitHandler} = useContext(AuthContext)
-const {values, onChange, onSubmit} = useForm(loginSubmitHandler, {
-    email: '',
-    password: '',
-});
+    const { loginSubmitHandler } = useContext(AuthContext)
+    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
+        [loginFormKeys.Email]: '',
+        [loginFormKeys.Password]: '',
+    });
 
 
     return (
@@ -27,7 +27,7 @@ const {values, onChange, onSubmit} = useForm(loginSubmitHandler, {
                     <input type='email' id='email' name={loginFormKeys.Email} placeholder='user@domain.com' onChange={onChange} value={values[loginFormKeys.Email]} />
 
                     <label htmlFor='login-pass'>Password:</label>
-                    <input type='password' id='login-password' name={loginFormKeys.Password}  onChange={onChange} value={values[loginFormKeys.Password]} />
+                    <input type='password' id='login-password' name={loginFormKeys.Password} onChange={onChange} value={values[loginFormKeys.Password]} />
 
                     <input className={styles.submitBtn} type='submit' value='Login' />
                     <p className={styles.field}>

@@ -1134,6 +1134,7 @@
 
             function logout() {
                 if (context.user !== undefined) {
+                    console.log(context.user)
                     const session = findSessionByUserId(context.user._id);
                     if (session !== undefined) {
                         context.protectedStorage.delete('sessions', session._id);

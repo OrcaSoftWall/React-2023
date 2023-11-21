@@ -7,7 +7,7 @@ import AuthContext from '../../contexts/authContext';
 
 function Header() {
     const { isAuthenticated, username } = useContext(AuthContext);
-    console.log(isAuthenticated)
+    console.log(isAuthenticated, username)
     return (
         <div className={styles.header}>
             {/* <img className={styles.banner} src={banner} alt="sports cars" /> */}
@@ -26,6 +26,7 @@ function Header() {
                         <Link to='/logout'>Logout</Link>
                         {/* <Link to='/register'>Register</Link> */}
                         <Link to='/add-car'>Add a car</Link>
+                        <span className={styles.span}>{username}</span>
                     </>
                 )}
                 {!isAuthenticated && (
@@ -36,7 +37,7 @@ function Header() {
                         <Link to='/login'>Login</Link>
                         {/* <Link to='/logout'>Logout</Link> */}
                         {/* <Link to='/register'>Register</Link> */}
-                        <Link to='/add-car'>Add a car</Link>
+                        {/* <Link to='/add-car'>Add a car</Link> */}
                     </>
                 )}
             </nav>
