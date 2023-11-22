@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './index.module.css';
 import AuthContext from '../../contexts/authContext';
 import useForm from '../../hooks/useForm';
@@ -33,6 +34,9 @@ function Register() {
                     <input type='password' id='re-password' name='re-password' onChange={onChange} value={values[registerFormKeys.ConfirmPassword]} />
 
                     <input className={styles.submitBtn} type='submit' value='Register' />
+                    <p className={styles.field}>
+                        <span>Have an account? <Link to='/login' className={styles.link}>LOGIN</Link></span>
+                    </p>
                 </div>
             </form>
         </section>

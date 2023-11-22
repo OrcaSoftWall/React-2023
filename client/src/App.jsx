@@ -10,7 +10,8 @@ import Login from './components/Login'
 import About from './components/About'
 import Register from './components/Register'
 import { useState } from 'react'
-import AuthContext from './contexts/authContext'
+// import AuthContext, { AuthProvider } from './contexts/authContext'
+import { AuthProvider } from './contexts/authContext'
 import * as authService from './services/authService'
 import Path from './paths'
 import Logout from './components/Logout'
@@ -42,7 +43,7 @@ function App() {
   const logoutHandler = () => {
     setAuth({});
     localStorage.removeItem('accessToken');
-};
+  };
 
 
   const values = {
@@ -55,7 +56,7 @@ function App() {
   }
 
   return (
-    <AuthContext.Provider value={values}>
+    <AuthProvider value={values}>
       <div >
         <Header />
         <Routes>
@@ -71,7 +72,7 @@ function App() {
         </Routes>
         <Footer />
       </div>
-    </AuthContext.Provider>
+    </AuthProvider>
   )
 }
 
