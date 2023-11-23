@@ -20,7 +20,7 @@ function Gallery() {
         <section id="catalog-page" className={styles.section}>
             <h1>Cars Gallery</h1>
             <div className={styles.gallery}>
-                {cars.map(car => (
+                {cars.map((car,index) => (
                     <Card key={car._id} {...car} />
                 ))}
 

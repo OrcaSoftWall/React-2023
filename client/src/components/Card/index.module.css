@@ -1,33 +1,24 @@
 .card {
-    background-color: brown;
-    color: azure;
     width: 20vw;
     margin: 5vh;
-    text-align: center;
     display: inline-block;
     align-self: stretch;
 }
 
-.info img {
-    /* height: 100%; 
-    width: 100%; 
-    object-fit: contain; */
-    /* margin-top: -10px; */
-    /* border-radius: 50%; */
-    /* height: 140px; */
-    /* width: 140px; */
-    /* position: absolute; */
-    /* top: 30px;
-    right: 30px; */
-
-    /* float: right;
-    padding: 5px;
-    max-width: 100%;
-    height: auto; */
+.info  {
+    background-color: brown;
+    color: azure;
+    text-align: center;
+    padding: 6px 0;
 }
 
 .info img {
     height: 100%;
     width: 100%;
     object-fit: contain;
+}
+
+.detailsButton {
+    text-decoration: none;
+    cursor:pointer;
 }
