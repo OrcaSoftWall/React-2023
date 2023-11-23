@@ -13,6 +13,7 @@ import Register from './components/Register'
 import { AuthProvider } from './contexts/authContext'
 
 import Logout from './components/Logout'
+import CarDetails from './components/CarDetails'
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/cars/gallery" element={<Gallery />} />
           <Route path="/about" element={<About />} />
-          <Route path="/cars/:carId" element={<Gallery />} />
+          <Route path="/cars/:carId" element={<CarDetails />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={<Register />} />
