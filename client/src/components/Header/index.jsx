@@ -20,24 +20,19 @@ function Header() {
                 {isAuthenticated && (
                     <>
                         <Link to='/'>Home</Link>
-                        <Link to='/gallery'>Gallery</Link>
+                        <Link to='/cars/gallery'>Gallery</Link>
                         <Link to='/about'>About</Link>
-                        {/* <Link to='/login'>Login</Link> */}
-                        <Link to='/logout'>Logout</Link>
-                        {/* <Link to='/register'>Register</Link> */}
-                        <Link to='/add-car'>Add a car</Link>
+                        <Link to='/cars/add-car'>Add a car</Link>
+                        <Link to='/logout' className={styles.logout}>Logout</Link>
                         <span className={styles.span}>{username}</span>
                     </>
                 )}
                 {!isAuthenticated && (
                     <>
                         <Link to='/'>Home</Link>
-                        <Link to='/gallery'>Gallery</Link>
+                        <Link to='/cars/gallery'>Gallery</Link>
                         <Link to='/about'>About</Link>
                         <Link to='/login'>Login</Link>
-                        {/* <Link to='/logout'>Logout</Link> */}
-                        {/* <Link to='/register'>Register</Link> */}
-                        {/* <Link to='/add-car'>Add a car</Link> */}
                     </>
                 )}
             </nav>

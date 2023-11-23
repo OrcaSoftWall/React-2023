@@ -6,6 +6,7 @@ import useForm from '../../hooks/useForm';
 
 const registerFormKeys = {
     Email: 'email',
+    Username: 'username',
     Password: 'password',
     ConfirmPassword: 're-password',
 }
@@ -14,6 +15,7 @@ function Register() {
     const { registerSubmitHandler } = useContext(AuthContext)
     const {values, onChange, onSubmit } = useForm(registerSubmitHandler, {
         [registerFormKeys.Email]: '',
+        [registerFormKeys.Username]: '',
         [registerFormKeys.Password]: '',
         [registerFormKeys.ConfirmPassword]: '',
     })
@@ -27,6 +29,9 @@ function Register() {
                     <label htmlFor='email'>Email:</label>
                     <input type='email' id='email' name='email' placeholder='user@domain.com' onChange={onChange} value={values[registerFormKeys.Email]} />
 
+                    <label htmlFor='username'>Username (optional):</label>
+                    <input type='text' id='username' name='username' placeholder='' onChange={onChange} value={values[registerFormKeys.Username]} />
+
                     <label htmlFor='register-pass'>Password:</label>
                     <input type='password' id='register-password' name='password' onChange={onChange} value={values[registerFormKeys.Password]} />
 
@@ -35,7 +40,7 @@ function Register() {
 
                     <input className={styles.submitBtn} type='submit' value='Register' />
                     <p className={styles.field}>
-                        <span>Have an account? <Link to='/login' className={styles.link}>LOGIN</Link></span>
+                        <span>Have an account? <Link to='/login' className={styles.link}>→ LOGIN</Link></span>
                     </p>
                 </div>
             </form>

@@ -31,7 +31,7 @@ function Login() {
 
                     <input className={styles.submitBtn} type='submit' value='Login' />
                     <p className={styles.field}>
-                        <span>Not registered yet? <Link to='/register'>Click here</Link></span>
+                        <span>Not registered yet? <Link to='/register' className={styles.link}>→ REGISTER</Link></span>
                     </p>
                 </div>
             </form>
