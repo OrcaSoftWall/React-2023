@@ -1,6 +1,7 @@
 .carCreate {
-    background-color: rgb(22, 21, 21);
+    background: no-repeat fixed center 40px url("../../images/Aurora_BG.jpg") ;    
     /* background-image: linear-gradient(to bottom, rgb(5, 5, 5),rgb(22, 21, 21),rgb(31, 31, 31),rgb(51, 51, 51),rgb(31, 31, 31),rgb(11, 11, 11),rgb(5, 5, 5)); */
+    /* background-color: rgb(22, 21, 21); */
     min-height: 65vh;
     display: flex;
     justify-content: center;
@@ -8,7 +9,7 @@
 }
 
 .container {
-    background-color: brown;
+    background-color: rgba(255, 50, 50, 0.3);
     max-width: 25vw;
     margin: 50px auto;
     display: flex;
@@ -28,13 +29,14 @@
     font-weight: bolder;
 }
 
-.container label, input, select {
+.container label, input, select, textarea {
     margin: 0 auto;
     width: 15vw;
 }
 
 .container textarea {
-    min-height:70px;
+    min-height:60px;
+    width: 15vw;
     resize: vertical; 
 
 }

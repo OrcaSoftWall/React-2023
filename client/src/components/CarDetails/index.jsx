@@ -53,12 +53,14 @@ function CarDetails() {
                         <hr />
                         {car._ownerId === userId && (
                             <>
-                                <Link to=""><button>DELETE</button></Link>
-                                <Link to=""><button>EDIT</button></Link>
                                 <div>
-                                    <button onClick={() => setIsModalOpen(true)}>Open Comment Modal</button>
+                                    <button onClick={() => setIsModalOpen(true)}>New Comment</button>
+                                    <CommentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+                                    <button onClick={() => setIsModalOpen(true)}>Edit Comment</button>
                                     <CommentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
                                 </div>
+                                <Link to=""><button>EDIT</button></Link>
+                                <Link to=""><button>DELETE</button></Link>
                             </>
                         )}
                     </section>

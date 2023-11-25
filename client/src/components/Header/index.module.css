@@ -10,6 +10,7 @@
     font-size: 60px;
     color: azure;
     padding: 10px 0 0 20px;
+    margin: 0;
 }
 
 .logo {
@@ -18,7 +19,7 @@
 }
 
 .header {
-    background-color: black;
+    background-color: rgb(5, 5, 5);
     height: 20vh;
     width: 100%;
     overflow: hidden;
@@ -67,8 +68,8 @@
 }
 
 .span {
-    float:right;
+    float: right;
     text-transform: none;
-    margin:8px;
+    margin: 8px;
     font-size: 1.1rem;
 }

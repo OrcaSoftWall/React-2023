@@ -6,10 +6,12 @@
 }
 
 .info  {
-    background-color: brown;
+    background-color: rgba(255, 50, 50, 0.3);
     color: azure;
     text-align: center;
     padding: 6px 0;
+    border:1px solid rgba(200, 20, 20, 0.3);
+    border-radius: 5px;
 }
 
 .info img {
