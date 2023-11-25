@@ -27,3 +27,8 @@
 .info {
     padding-left: 40px;
 }
+
+.info button {
+    float: right;
+    margin-left: 20px;
+}

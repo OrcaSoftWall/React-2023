@@ -1,6 +1,6 @@
 import styles from './index.module.css';
 import { useContext, useEffect, useReducer, useState, useMemo } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 import * as carsService from '../../services/carsService';
 import * as commentService from '../../services/commentService';
@@ -9,16 +9,23 @@ import AuthContext from "../../contexts/authContext";
 import useForm from '../../hooks/useForm';
 // import { pathToUrl } from "../../utils/pathUtils";
 import Path from "../../paths";
+import CommentModal from '../CommentModal';
 
 function CarDetails() {
     const { email, userId } = useContext(AuthContext);
     const [car, setCar] = useState({});
     // const [comments, dispatch] = useReducer(reducer, []);
     const { carId } = useParams();
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const navigate = useNavigate()
 
     useEffect(() => {
         carsService.getOne(carId)
-            .then(setCar);
+            .then(setCar)
+            .catch(err => {
+                console.error(`ERROR ${err.code}! \n Server responded with: ${err.message}`)
+                navigate('/cars/gallery')
+            })
 
         // commentService.getAll(carId)
         //     .then((result) => {
@@ -39,15 +46,19 @@ function CarDetails() {
                 <div className={styles.slot} >
                     <img src={car.imageURL} alt={car.make} />
                     <section className={styles.info} >
-                        <h4>{car.make}</h4>
-                        <h4>{car.model}</h4>
-                        <h5>{car.type}</h5>
-                        <h6>Added at {`${date.toLocaleDateString()} ${date.toLocaleTimeString()}`}</h6>
+                        <h4>Make: {car.make}</h4>
+                        <h4>Model:{car.model}</h4>
+                        <h5>Type: {car.type}</h5>
+                        <p>Added at {`${date.toLocaleDateString()} ${date.toLocaleTimeString()}`}</p>
                         <hr />
                         {car._ownerId === userId && (
                             <>
-                                <Link to="">EDIT </Link>
-                                <Link to=""> DELETE</Link>
+                                <Link to=""><button>DELETE</button></Link>
+                                <Link to=""><button>EDIT</button></Link>
+                                <div>
+                                    <button onClick={() => setIsModalOpen(true)}>Open Comment Modal</button>
+                                    <CommentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+                                </div>
                             </>
                         )}
                     </section>

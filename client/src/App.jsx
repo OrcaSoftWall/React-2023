@@ -24,12 +24,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cars/gallery" element={<Gallery />} />
-          <Route path="/about" element={<About />} />
           <Route path="/cars/:carId" element={<CarDetails />} />
+          <Route path="/cars/add-car" element={<CarCreate />} />
+          <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/cars/add-car" element={<CarCreate />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
         <Footer />
