@@ -11,6 +11,7 @@ import useForm from '../../hooks/useForm';
 import Path from "../../paths";
 import CommentModal from '../CommentModal';
 
+
 function CarDetails() {
     const { email, userId } = useContext(AuthContext);
     const [car, setCar] = useState({});
@@ -53,12 +54,6 @@ function CarDetails() {
                         <hr />
                         {car._ownerId === userId && (
                             <>
-                                <div>
-                                    <button onClick={() => setIsModalOpen(true)}>New Comment</button>
-                                    <CommentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-                                    <button onClick={() => setIsModalOpen(true)}>Edit Comment</button>
-                                    <CommentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-                                </div>
                                 <Link to=""><button>EDIT</button></Link>
                                 <Link to=""><button>DELETE</button></Link>
                             </>
@@ -67,6 +62,12 @@ function CarDetails() {
                 </div>
                 <h4>Summary:</h4>
                 <p>{car.summary}</p>
+            </div>
+            <div>
+                <button onClick={() => setIsModalOpen(true)}>New Comment</button>
+                <CommentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+                <button onClick={() => setIsModalOpen(true)}>Edit Comment</button>
+                <CommentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
             </div>
 
         </div>
