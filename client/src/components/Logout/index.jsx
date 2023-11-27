@@ -16,7 +16,8 @@ export default function Logout() {
             })
             .catch((err) => {
                 console.log('Error: ',err)
-                navigate(Path.Home)}
+                logoutHandler();
+                navigate('/login')}
                 );
     }, []);
 

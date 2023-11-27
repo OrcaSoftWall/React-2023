@@ -22,6 +22,21 @@ function CarCreate() {
         }
     }
 
+    
+    // const editCarSubmitHandler = async (e) => {
+    //     e.preventDefault()
+    //     const values = Object.fromEntries(new FormData(e.currentTarget))
+    //     try {
+            
+    //         navigate('/gallery')
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
+
+
+
+
     return (
         <section className={styles.carCreate}>
             <form id='create' onSubmit={createCarSubmitHandler}>

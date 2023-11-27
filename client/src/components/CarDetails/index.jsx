@@ -39,6 +39,15 @@ function CarDetails() {
 
     const date = new Date(car._createdOn);
 
+    const deleteButtonClickHandler = async () => {
+        const hasConfirmed = confirm(`Are you sure you want to delete ${car.make} - ${car.model}`)
+
+        if (hasConfirmed) {
+            await carsService.remove(carId)
+            navigate('/cars/gallery')
+        }
+    }
+
     return (
         <div className={styles.carDetails} >
             <h1>{car.make} - {car.model}</h1>
@@ -56,6 +65,7 @@ function CarDetails() {
                             <>
                                 <Link to=""><button>EDIT</button></Link>
                                 <Link to=""><button>DELETE</button></Link>
+                                <button onClick={deleteButtonClickHandler}>DELETE</button>
                             </>
                         )}
                     </section>
