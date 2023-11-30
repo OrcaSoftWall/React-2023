@@ -14,15 +14,15 @@ export const getOne = async (carId) => {
     return result;
 }
 
-export const getLatest = async () => {
+export const getLatest = async (amountOfCars) => {
     const query = new URLSearchParams({
-        // sortBy: `_createdOn desc`,
+        // sortBy: decodeURIComponent(`_createdOn desc`),
         offset: 0,
-        pageSize: 3
+        pageSize: amountOfCars
     })
 
-    const result = await request.get(`${baseUrl}?${query}`, );
-
+    const result = await request.get(`${baseUrl}?sortBy=_createdOn a&${query}`, );
+    console.log(result)
     return result;
 }
 

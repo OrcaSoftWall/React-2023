@@ -1,0 +1,18 @@
+.section {
+    padding-top:200px;;
+    background: no-repeat fixed center 40px url("../../images/ATR3D.png") ;   
+    min-height: 65vh;
+
+}
+
+.gallery {
+    /* background-color: rgb(22, 21, 21); */
+    min-height: 58vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width:84vw;
+    margin: 0 auto;
+}
+
