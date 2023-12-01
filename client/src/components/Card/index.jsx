@@ -18,7 +18,7 @@ function Card({
                     <h4>{make}</h4>
                     <h6>Model: {model}</h6>
                     <h6>Type: {type}</h6>
-                    <img src={imageURL} alt={imageURL} />
+                    <img src={imageURL} alt={`${make} - ${model}`} />
                     <p>{summary}</p>
                 </div>
             </Link>

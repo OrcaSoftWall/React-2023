@@ -18,14 +18,14 @@ function Gallery() {
 
     return (
         <section id="catalog-page" className={styles.section}>
-            <h1>Cars Gallery</h1>
+            <h1 className={styles.title}>Cars Gallery</h1>
             <div className={styles.gallery}>
                 {cars.map((car,index) => (
                     <Card key={car._id} {...car} />
                 ))}
 
                 {cars.length === 0 && (
-                    <h3 className="no-articles">No cars listed yet</h3>
+                    <p className={styles.empty}>No cars listed yet...</p>
                 )}
             </div>
         </section>

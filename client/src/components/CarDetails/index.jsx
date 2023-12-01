@@ -54,7 +54,7 @@ function CarDetails() {
             <hr />
             <div className={styles.container}>
                 <div className={styles.slot} >
-                    <img src={car.imageURL} alt={car.make} />
+                    <img src={car.imageURL} alt={`${car.make} - ${car.model}`} />
                     <section className={styles.info} >
                         <h4>Make: {car.make}</h4>
                         <h4>Model:{car.model}</h4>
