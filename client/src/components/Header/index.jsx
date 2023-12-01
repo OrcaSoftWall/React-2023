@@ -4,6 +4,7 @@ import logo from '../../images/logo-nav.png';
 import { Link } from "react-router-dom";
 import { useContext } from 'react';
 import AuthContext from '../../contexts/authContext';
+import Path from '../../paths';
 
 function Header() {
     const { isAuthenticated, username, userId } = useContext(AuthContext);
@@ -19,20 +20,20 @@ function Header() {
                 <img className={styles.logo} src={logo} alt="logo sleek car" />
                 {isAuthenticated && (
                     <>
-                        <Link to='/'>Home</Link>
-                        <Link to='/cars/gallery'>Gallery</Link>
-                        <Link to='/about'>About</Link>
-                        <Link to='/cars/add-car'>Add a car</Link>
-                        <Link to='/logout' className={styles.logout}>Logout</Link>
+                        <Link to={Path.Home}>Home</Link>
+                        <Link to={Path.Gallery}>Gallery</Link>
+                        <Link to={Path.About}>About</Link>
+                        <Link to={Path.AddCar}>Add a car</Link>
+                        <Link to={Path.Logout} className={styles.logout}>Logout</Link>
                         <span className={styles.span}>{username}</span>
                     </>
                 )}
                 {!isAuthenticated && (
                     <>
-                        <Link to='/'>Home</Link>
-                        <Link to='/cars/gallery'>Gallery</Link>
-                        <Link to='/about'>About</Link>
-                        <Link to='/login'>Login</Link>
+                        <Link to={Path.Home}>Home</Link>
+                        <Link to={Path.Gallery}>Gallery</Link>
+                        <Link to={Path.About}>About</Link>
+                        <Link to={Path.Login}>Login</Link>
                     </>
                 )}
             </nav>

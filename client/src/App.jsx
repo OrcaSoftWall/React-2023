@@ -11,6 +11,7 @@ import About from './components/About'
 import Register from './components/Register'
 // import AuthContext, { AuthProvider } from './contexts/authContext'
 import { AuthProvider } from './contexts/authContext'
+import Path from './paths';
 
 import Logout from './components/Logout'
 import CarDetails from './components/CarDetails'
@@ -22,15 +23,15 @@ function App() {
       <div >
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/cars/gallery" element={<Gallery />} />
-          <Route path="/cars/:carId" element={<CarDetails />} />
-          <Route path="/cars/add-car" element={<CarCreate />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="*" element={<Page404 />} />
+          <Route path={Path.Home} element={<Home />} />
+          <Route path={Path.Gallery} element={<Gallery />} />
+          <Route path={Path.Detais} element={<CarDetails />} />
+          <Route path={Path.AddCar} element={<CarCreate />} />
+          <Route path={Path.About} element={<About />} />
+          <Route path={Path.Login} element={<Login />} />
+          <Route path={Path.Logout} element={<Logout />} />
+          <Route path={Path.Register} element={<Register />} />
+          <Route path={Path.Rest} element={<Page404 />} />
         </Routes>
         <Footer />
       </div>
