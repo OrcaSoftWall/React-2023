@@ -64,7 +64,7 @@ function CarDetails() {
                         {car._ownerId === userId && (
                             <>
                                 <Link to=""><button>EDIT</button></Link>
-                                <Link to=""><button>DELETE</button></Link>
+                                {/* <Link to=""><button>DELETE</button></Link> */}
                                 <button onClick={deleteButtonClickHandler}>DELETE</button>
                             </>
                         )}
@@ -75,7 +75,7 @@ function CarDetails() {
             </div>
             <div>
                 <button onClick={() => setIsModalOpen(true)}>New Comment</button>
-                <CommentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+                <CommentModal carId={carId} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
                 <button onClick={() => setIsModalOpen(true)}>Edit Comment</button>
                 <CommentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
             </div>

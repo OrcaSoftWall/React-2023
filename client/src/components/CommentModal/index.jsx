@@ -1,13 +1,16 @@
 import styles from './index.module.css';
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import * as commentService from '../../services/commentService'
+
 
 function CommentModal({ isOpen, onClose }) {
     const [comment, setComment] = useState('');
+    const { carId } = useParams();
 
-    const handleSubmit = () => {
-        // Handle the submit action here
-
-        console.log(comment);
+    const handleSubmit = async () => {
+        const newComment = await commentService.create(carId, comment)
+        // console.log(newComment);
         onClose(); // Close the modal after submitting
     };
 
@@ -16,7 +19,7 @@ function CommentModal({ isOpen, onClose }) {
     return (
         <div className={styles.modal}>
             <div className={styles.modalContent}>
-            <h3>New Comment:</h3>
+                <h3>New Comment:</h3>
                 <textarea
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
