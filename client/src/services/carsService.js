@@ -22,7 +22,6 @@ export const getLatest = async (amountOfCars) => {
     })
 
     const result = await request.get(`${baseUrl}?sortBy=_createdOn a&${query}`, );
-    console.log(result)
     return result;
 }
 
