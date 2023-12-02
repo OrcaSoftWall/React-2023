@@ -3,9 +3,9 @@
     /* background-color: rgb(22, 21, 21); */
     /* background-image: linear-gradient(to bottom, rgb(5, 5, 5),rgb(22, 21, 21),rgb(31, 31, 31),rgb(51, 51, 51),rgb(31, 31, 31),rgb(11, 11, 11),rgb(5, 5, 5)); */
     /* background-image: linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.9)) , url("../../images/Dash1.png"); */
-    background-image: url("../../images/Dash1.png");
+    /* background-image: url("../../images/Dash1.png"); */
     min-height: 65vh;
-    color: azure
+    color:azure
 }
 
 .container {
@@ -16,7 +16,7 @@
     border-radius: 8px;
     background-color: rgba(16, 8, 8, 0.93);
     /* background-color: rgba(255, 50, 50, 0.3); */
-}
+    }
 
 .slot {
     display: flex;
@@ -26,7 +26,7 @@
 }
 
 .slot img {
-    height: 20rem;
+    height:20rem;
 }
 
 .info {
@@ -52,15 +52,4 @@
 .button:hover {
     border: 2px solid rgb(126, 63, 63);
     background: linear-gradient(165deg, rgb(84, 21, 21), rgb(21, 21, 21));
-}
-
-.added {
-    font-size: 0.8rem;
-    color: coral;
-    padding-left: 2vw;
-}
-
-.added span {
-    color: rgb(255, 168, 136);
-
 }

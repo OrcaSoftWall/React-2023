@@ -6,6 +6,7 @@ export const getAll = async (carId) => {
     const query = new URLSearchParams({
         where: `carId="${carId}"`,
         load: `owner=_ownerId:users`,
+        // load: `owner=_ownerId:users,username=_ownerId:users`,
     });
 
     const result = await request.get(`${baseUrl}?${query}`);
