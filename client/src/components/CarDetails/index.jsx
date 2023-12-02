@@ -11,7 +11,7 @@ import useForm from '../../hooks/useForm';
 import Path from "../../paths";
 import CommentModal from '../CommentModal';
 import CarComment from '../CarComment';
-
+import pic from "../../images/Dash1.png"
 
 function CarDetails() {
     const { email, username, userId } = useContext(AuthContext);
@@ -45,8 +45,8 @@ function CarDetails() {
 
     const date = new Date(car._createdOn);
     const today = new Date()
-    const age = Math.floor((today-date)/3600000/24)
-    const yesterday = new Date(new Date().setDate(new Date().getDate()-1))
+    const age = Math.floor((today - date) / 3600000 / 24)
+    const yesterday = new Date(new Date().setDate(new Date().getDate() - 1))
 
     const deleteButtonClickHandler = async () => {
         const hasConfirmed = confirm(`Are you sure you want to delete ${car.make} - ${car.model}`)
@@ -58,10 +58,11 @@ function CarDetails() {
     }
 
     return (
+
         <div className={styles.carDetails} >
             <h1>{car.make} - {car.model}</h1>
             <p className={styles.added}>Added by <span>{`${username}`}</span> on {`${date.toLocaleDateString()}`} at {`${date.toLocaleTimeString()}`}</p>
-            <p className={styles.added}>Added by <span>{`${username}`}</span>  {age < 1 ? 'today' : `${age} days ago` }</p>
+            <p className={styles.added}>Added by <span>{`${username}`}</span>  {age < 1 ? 'today' : `${age} days ago`}</p>
             <hr />
             <div className={styles.container}>
                 <div className={styles.slot} >

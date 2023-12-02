@@ -33,30 +33,29 @@ function CarComment() {
         //     });
     }, [carId]);
 
-    // const deleteButtonClickHandler = async () => {
-    //     const hasConfirmed = confirm(`Are you sure you want to delete ${car.make} - ${car.model}`)
+    const deleteButtonClickHandler = async (commentId) => {
+        const hasConfirmed = confirm(`Are you sure you want to delete comment?`)
 
-    //     if (hasConfirmed) {
-    //         await carsService.remove(carId)
-    //         navigate('/cars/gallery')
-    //     }
-    // }
+        if (hasConfirmed) {
+            await commentService.remove(commentId)
+            // navigate('/cars/gallery')
+        }
+    }
 
     return (
         <div className={styles.carDetails} >
             {
-                comments.map(comment => (
+                comments.toReversed().map(comment => (
                     <section key={comment._id} className={styles.info} >
-                        <p>Added at {`${new Date(comment._createdOn).toLocaleDateString()} ${new Date(comment._createdOn).toLocaleTimeString()}`}</p>
-                        <h4>User: {comment.owner.email}</h4>
-                        <h4>Comment:{comment.text}</h4>
-                        <hr />
-                        {/* {car._ownerId === userId && (
+                        {/* <p>Added at {`${new Date(comment._createdOn).toLocaleDateString()} ${new Date(comment._createdOn).toLocaleTimeString()}`}</p> */}
+                        <p>{comment.owner.email} said at {`${new Date(comment._createdOn).toLocaleDateString()} ${new Date(comment._createdOn).toLocaleTimeString()}`}:</p>
+                        <h6>{comment.text}</h6>
+                        {comment._ownerId === userId && (
                             <>
                                 <Link to=""><button className={styles.button}>EDIT</button></Link>
-                                <button className={styles.button} onClick={deleteButtonClickHandler}>DELETE</button>
+                                <button className={styles.button} onClick={() => deleteButtonClickHandler(comment._id)}>DELETE</button>
                             </>
-                        ) */}
+                        )}
                     </section>
                 ))}
         </div>
