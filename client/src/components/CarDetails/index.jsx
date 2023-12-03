@@ -20,6 +20,7 @@ function CarDetails() {
     // const [comments, dispatch] = useReducer(reducer, []);
     const { carId } = useParams();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [creator, setCreator] = useState("")
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -32,7 +33,7 @@ function CarDetails() {
 
         commentService.getAll(carId)
             .then(setComments);
-        console.log(comments)
+        // console.log(comments)
 
         // commentService.getAll(carId)
         //     .then((result) => {
@@ -48,6 +49,10 @@ function CarDetails() {
     const age = Math.floor((today - date) / 3600000 / 24)
     const yesterday = new Date(new Date().setDate(new Date().getDate() - 1))
 
+    const safeAccessproperties = (car) => {
+        return car && car.owner ? (car.owner.username || car.owner.email) : 'Loading...';
+    }
+
     const deleteButtonClickHandler = async () => {
         const hasConfirmed = confirm(`Are you sure you want to delete ${car.make} - ${car.model}`)
 
@@ -56,13 +61,16 @@ function CarDetails() {
             navigate('/cars/gallery')
         }
     }
-
+    console.log(car)
     return (
-
         <div className={styles.carDetails} >
             <h1>{car.make} - {car.model}</h1>
             {/* <p className={styles.added}>Added by <span>{`${username}`}</span> on {`${date.toLocaleDateString()}`} at {`${date.toLocaleTimeString()}`}</p> */}
-            <p className={styles.added}>Added by <span>{`${username}`}</span>  {age < 1 ? 'today' : `${age} days ago`}</p>
+            {car ? (
+                <p className={styles.added}>Added by <span>{`${safeAccessproperties(car)}`}</span>  {age < 1 ? 'today' : `${age} days ago`}</p>
+            ) : (
+                <p>Loading car data...</p>
+            )}
             <hr />
             <div className={styles.container}>
                 <div className={styles.slot} >
@@ -83,14 +91,14 @@ function CarDetails() {
                 </div>
                 <h4>Summary:</h4>
                 <p className={styles.summary}>{car.summary}</p>
-                { userId && (
-                <div>
-                    <button className={styles.button} onClick={() => setIsModalOpen(true)}>New Comment</button>
-                    <CommentModal carId={carId} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-                </div>
+                {userId && (
+                    <div>
+                        <button className={styles.button} onClick={() => setIsModalOpen(true)}>New Comment</button>
+                        <CommentModal carId={carId} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+                    </div>
                 )}
             </div>
-            <CarComment trigger={isModalOpen===false} />
+            <CarComment trigger={isModalOpen === false} />
             {/* {car._ownerId === userId && (
                 <div>
                     <button className={styles.button} onClick={() => setIsModalOpen(true)}>New Comment</button>

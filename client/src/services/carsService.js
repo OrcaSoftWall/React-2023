@@ -9,7 +9,12 @@ export const getAll = async () => {
 };
 
 export const getOne = async (carId) => {
-    const result = await request.get(`${baseUrl}/${carId}`, );
+    const query = new URLSearchParams({
+        // where: `carId="${carId}"`,
+        load: `owner=_ownerId:users`,
+        // load: `owner=_ownerId:users,username=_ownerId:users`,
+    })
+    const result = await request.get(`${baseUrl}/${carId}?${query}`, );
 
     return result;
 }
