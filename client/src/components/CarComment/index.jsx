@@ -48,7 +48,7 @@ function CarComment() {
                 comments.toReversed().map(comment => (
                     <section key={comment._id} className={styles.info} >
                         {/* <p>Added at {`${new Date(comment._createdOn).toLocaleDateString()} ${new Date(comment._createdOn).toLocaleTimeString()}`}</p> */}
-                        <p>{comment.owner.email} said at {`${new Date(comment._createdOn).toLocaleDateString()} ${new Date(comment._createdOn).toLocaleTimeString()}`}:</p>
+                        <p className={styles.meta}><span>{comment.owner.email}</span> said at {`${new Date(comment._createdOn).toLocaleDateString()} ${new Date(comment._createdOn).toLocaleTimeString()}`}:</p>
                         <h6>{comment.text}</h6>
                         {comment._ownerId === userId && (
                             <>

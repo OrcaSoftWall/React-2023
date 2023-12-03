@@ -31,6 +31,8 @@
 
 .slot img {
     height: 20rem;
+    width: 30vw;
+    object-fit: cover;
 }
 
 .info {
