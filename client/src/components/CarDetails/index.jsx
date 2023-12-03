@@ -88,7 +88,7 @@ function CarDetails() {
                     <CommentModal carId={carId} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
                 </div>
             </div>
-            <CarComment />
+            <CarComment trigger={isModalOpen===false} />
             {/* {car._ownerId === userId && (
                 <div>
                     <button className={styles.button} onClick={() => setIsModalOpen(true)}>New Comment</button>

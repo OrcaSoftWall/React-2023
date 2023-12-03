@@ -25,7 +25,7 @@ function Header() {
                         <Link to={Path.About}>About</Link>
                         <Link to={Path.AddCar}>Add a car</Link>
                         <Link to={Path.Logout} className={styles.logout}>Logout</Link>
-                        <span className={styles.span}>{username}</span>
+                        <span className={styles.span}>User: {username}</span>
                     </>
                 )}
                 {!isAuthenticated && (
@@ -34,6 +34,8 @@ function Header() {
                         <Link to={Path.Gallery}>Gallery</Link>
                         <Link to={Path.About}>About</Link>
                         <Link to={Path.Login}>Login</Link>
+                        <span className={styles.span}>You are viewing as Guest</span>
+
                     </>
                 )}
             </nav>

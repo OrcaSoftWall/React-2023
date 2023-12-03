@@ -9,19 +9,18 @@ import Path from "../../paths";
 import CommentModal from '../CommentModal';
 
 
-function CarComment() {
+function CarComment(trigger) {
     const { userId } = useContext(AuthContext);
     const [comments, setComments] = useState([])
     // const [comments, dispatch] = useReducer(reducer, []);
     const { carId } = useParams();
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [removed, setRemoved] = useState(false);
     const navigate = useNavigate()
 
 
     useEffect(() => {
         commentService.getAll(carId)
             .then(setComments);
-        console.log(comments)
 
         // commentService.getAll(carId)
         //     .then((result) => {
@@ -30,14 +29,15 @@ function CarComment() {
         //             payload: result,
         //         });
         //     });
-    }, [carId]);
+    }, [carId, trigger, removed]);
 
+    console.log(comments)
     const deleteButtonClickHandler = async (commentId) => {
         const hasConfirmed = confirm(`Are you sure you want to delete comment?`)
 
         if (hasConfirmed) {
             await commentService.remove(commentId)
-            // navigate('/cars/gallery')
+            setRemoved(!removed)
         }
     }
 
