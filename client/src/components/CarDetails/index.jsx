@@ -83,10 +83,12 @@ function CarDetails() {
                 </div>
                 <h4>Summary:</h4>
                 <p className={styles.summary}>{car.summary}</p>
+                { userId && (
                 <div>
                     <button className={styles.button} onClick={() => setIsModalOpen(true)}>New Comment</button>
                     <CommentModal carId={carId} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
                 </div>
+                )}
             </div>
             <CarComment trigger={isModalOpen===false} />
             {/* {car._ownerId === userId && (

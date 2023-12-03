@@ -31,7 +31,6 @@ function CarComment(trigger) {
         //     });
     }, [carId, trigger, removed]);
 
-    console.log(comments)
     const deleteButtonClickHandler = async (commentId) => {
         const hasConfirmed = confirm(`Are you sure you want to delete comment?`)
 
@@ -47,7 +46,6 @@ function CarComment(trigger) {
             {
                 comments.toReversed().map(comment => (
                     <section key={comment._id} className={styles.info} >
-                        {/* <p>Added at {`${new Date(comment._createdOn).toLocaleDateString()} ${new Date(comment._createdOn).toLocaleTimeString()}`}</p> */}
                         <p className={styles.meta}><span>{comment.owner.email}</span> said at {`${new Date(comment._createdOn).toLocaleDateString()} ${new Date(comment._createdOn).toLocaleTimeString()}`}:</p>
                         <h6>{comment.text}</h6>
                         {comment._ownerId === userId && (
