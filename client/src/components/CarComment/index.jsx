@@ -2,7 +2,6 @@ import styles from './index.module.css';
 import { useContext, useEffect, useReducer, useState, useMemo } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 
-import * as carsService from '../../services/carsService';
 import * as commentService from '../../services/commentService';
 import AuthContext from "../../contexts/authContext";
 import useForm from '../../hooks/useForm';
@@ -11,14 +10,14 @@ import CommentModal from '../CommentModal';
 
 
 function CarComment() {
-    const { email, username, userId } = useContext(AuthContext);
+    const { userId } = useContext(AuthContext);
     const [comments, setComments] = useState([])
     // const [comments, dispatch] = useReducer(reducer, []);
     const { carId } = useParams();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const navigate = useNavigate()
 
-    
+
     useEffect(() => {
         commentService.getAll(carId)
             .then(setComments);
@@ -43,7 +42,8 @@ function CarComment() {
     }
 
     return (
-        <div className={styles.carDetails} >
+        <div className={styles.comment} >
+            <h3>Comments:</h3>
             {
                 comments.toReversed().map(comment => (
                     <section key={comment._id} className={styles.info} >
@@ -56,8 +56,12 @@ function CarComment() {
                                 <button className={styles.button} onClick={() => deleteButtonClickHandler(comment._id)}>DELETE</button>
                             </>
                         )}
+
                     </section>
                 ))}
+            {comments.length === 0 && (
+                <p className={styles.empty}>No comments yet...</p>
+            )}
         </div>
 
     );

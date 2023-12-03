@@ -21,7 +21,7 @@ export const getLatest = async (amountOfCars) => {
         pageSize: amountOfCars
     })
 
-    const result = await request.get(`${baseUrl}?sortBy=_createdOn a&${query}`, );
+    const result = await request.get(`${baseUrl}?sortBy=_createdOn a&${query}`, );   // a or desc
     return result;
 }
 
