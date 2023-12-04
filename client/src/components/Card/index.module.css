@@ -13,7 +13,8 @@
     padding: 6px 0;
     border:1px solid rgba(200, 20, 20, 0.3);
     border-radius: 5px;
-    min-height: 450px;
+    min-height: 380px;
+    /* min-height: 450px; */
 }
 
 .info img {
@@ -22,6 +23,13 @@
     object-fit: contain;
     height: 200px;
     object-fit: cover;
+}
+
+.info p {
+    padding:10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .detailsButton {
