@@ -25,7 +25,7 @@ function GalleryLatest() {
                 ))}
 
                 {cars.length === 0 && (
-                    <h3 className="no-articles">No cars listed yet</h3>
+                    <h3 className={styles.empty}>No cars listed yet</h3>
                 )}
             </div>
         </section>
