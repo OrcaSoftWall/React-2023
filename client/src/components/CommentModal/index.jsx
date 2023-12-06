@@ -10,7 +10,8 @@ function CommentModal({ isOpen, onClose }) {
 
     const handleSubmit = async () => {
         const newComment = await commentService.create(carId, comment)
-        // console.log(newComment);
+        console.log(newComment);
+        setComment('')
         onClose(); // Close the modal after submitting
     };
 

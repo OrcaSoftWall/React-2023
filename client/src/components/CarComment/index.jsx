@@ -4,9 +4,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 
 import * as commentService from '../../services/commentService';
 import AuthContext from "../../contexts/authContext";
-import useForm from '../../hooks/useForm';
-import Path from "../../paths";
-import CommentModal from '../CommentModal';
+import CommentEditModal from '../CommentEditModal';
 
 
 function CarComment(trigger) {
@@ -16,7 +14,8 @@ function CarComment(trigger) {
     const { carId } = useParams();
     const [removed, setRemoved] = useState(false);
     const navigate = useNavigate()
-
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [editingCommentId, setEditingCommentId] = useState(null); //
 
     useEffect(() => {
         commentService.getAll(carId)
@@ -40,28 +39,47 @@ function CarComment(trigger) {
         }
     }
 
+    const editButtonClickHandler = (commentId) => {
+        setEditingCommentId(commentId);
+        setIsModalOpen(true);
+    };
+
     return (
         <div className={styles.comment} >
             <h3>Comments:</h3>
             {
                 comments.toReversed().map(comment => (
                     <section key={comment._id} className={styles.info} >
-                        <p className={styles.meta}><span>{comment.owner.username||comment.owner.email}</span> said at {`${new Date(comment._createdOn).toLocaleDateString()} ${new Date(comment._createdOn).toLocaleTimeString()}`}:</p>
+                        <p className={styles.meta}><span>{comment.owner.username || comment.owner.email}</span> said at {`${new Date(comment._createdOn).toLocaleDateString()} ${new Date(comment._createdOn).toLocaleTimeString()}`}:</p>
                         <h6>{comment.text}</h6>
                         {comment._ownerId === userId && (
-                            <>
-                                <Link to=""><button className={styles.button}>EDIT</button></Link>
+                            <div className={styles.controlsWrapper}>
+                                <div>
+                                    <button className={styles.button} onClick={() => editButtonClickHandler(comment._id)}>EDIT</button>
+                                    {editingCommentId === comment._id && (
+                                        <CommentEditModal text={comment.text} commentId={comment._id} isOpen={isModalOpen} onClose={() => {
+                                            setIsModalOpen(false);
+                                            setEditingCommentId(null); 
+                                        }}
+                                            onCommentUpdate={(updatedCommentId, updatedText) => {
+                                                setComments(currentComments => currentComments.map(comment =>
+                                                    comment._id === updatedCommentId
+                                                        ? { ...comment, text: updatedText }
+                                                        : comment
+                                                ));
+                                            }}
+                                        />
+                                    )}
+                                </div>
                                 <button className={styles.button} onClick={() => deleteButtonClickHandler(comment._id)}>DELETE</button>
-                            </>
+                            </div>
                         )}
-
                     </section>
                 ))}
             {comments.length === 0 && (
                 <p className={styles.empty}>No comments yet...</p>
             )}
         </div>
-
     );
 }
 

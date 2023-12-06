@@ -64,3 +64,8 @@
     border: 2px solid rgb(126, 63, 63);
     background: linear-gradient(165deg, rgb(84, 21, 21), rgb(21, 21, 21));
 }
+
+.controlsWrapper {
+    display: flex;
+    justify-content: flex-end;
+}
