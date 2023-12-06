@@ -55,4 +55,5 @@ select {
 .error {
     color: black;
     font-size: 0.9rem;
+    text-transform: capitalize;
 }

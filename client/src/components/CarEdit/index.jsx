@@ -1,5 +1,6 @@
 import styles from './index.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import * as carsService from '../../services/carsService'
 import useForm from '../../hooks/useForm';
 import createCarValidation from '../../validations/carCreateValidation';
@@ -13,31 +14,49 @@ const formValuesKeys = {
 }
 
 
-function CarCreate() {
+function CarEdit() {
+    const { carId } = useParams();
     const navigate = useNavigate();
-    const { values, onChange, onSubmit, errors } = useForm(async (values) => {
-        console.log("CarCreate Function values: ", values);
-        try {
-            const result = await carsService.create(values);
-            console.log(result)
-            navigate('/cars/gallery');
-        } catch (err) {
-            // Error notification
-            console.log(err);
-        }
-    }, {
+    const [initialValues, setInitialValues] = useState({
         [formValuesKeys.Make]: '',
         [formValuesKeys.Model]: '',
-        [formValuesKeys.Type]: 'F1',
+        [formValuesKeys.Type]: '',
         [formValuesKeys.Image]: '',
         [formValuesKeys.Summary]: ''
-    }, createCarValidation)
+    })
 
-     return (
+    useEffect(() => {
+        carsService.getOne(carId)
+            .then(carData => {
+                console.log("carData: ", carData);
+                setInitialValues({
+                    [formValuesKeys.Make]: carData.make,
+                    [formValuesKeys.Model]: carData.model,
+                    [formValuesKeys.Type]: carData.type,
+                    [formValuesKeys.Image]: carData.imageURL,
+                    [formValuesKeys.Summary]: carData.summary
+                })
+            });
+    }, [carId]);
+
+    const { values, onChange, onSubmit, errors } = useForm(async (values) => {
+        console.log("CarEdit Function values: ", values);
+        try {
+            const result = await carsService.edit(carId, values);
+            // console.log(result)
+            navigate('/cars/gallery');
+        } catch (err) {
+            console.log(err);
+        }
+    },initialValues, createCarValidation)
+
+    console.log("Value for make:", values[formValuesKeys.Make]);
+
+    return (
         <section className={styles.carCreate}>
-            <form id='create' onSubmit={onSubmit}>
+            <form id='edit-car' onSubmit={onSubmit}>
                 <div className={styles.container}>
-                    <h1>Add a Silk Car</h1>
+                    <h1>Edit Car</h1>
                     <label htmlFor='make'>Make:</label>
                     <input type='text' id='make' name={formValuesKeys.Make} placeholder='Car brand' value={values[formValuesKeys.Make]} onChange={onChange} autoFocus />
                     {errors.make && <p className={styles.error} >{errors.make}</p>}
@@ -65,7 +84,7 @@ function CarCreate() {
                     <textarea id='summary' name={formValuesKeys.Summary} placeholder='Dream car...' value={values[formValuesKeys.Summary]} onChange={onChange} />
                     {errors.summary && <p className={styles.error} >{errors.summary}</p>}
 
-                    <input className={styles.submitBtn} type='submit' value='CREATE' />
+                    <input className={styles.submitBtn} type='submit' value='Edit' />
                     <input className={styles.submitBtn} type='reset' value='RESET FORM' />
                 </div>
             </form>
@@ -73,4 +92,4 @@ function CarCreate() {
     );
 }
 
-export default CarCreate;
+export default CarEdit;

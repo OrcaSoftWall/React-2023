@@ -18,7 +18,7 @@ function GalleryLatest() {
 
     return (
         <section id="catalog-page" className={styles.section}>
-            <h1 className={styles.title}>NEWEST CARS</h1>
+            <h1 className={styles.title}>Newest Cars</h1>
             <div className={styles.gallery}>
                 {cars.map((car,index) => (
                     <Card key={car._id} {...car} />

@@ -15,6 +15,7 @@ import Path from './paths';
 
 import Logout from './components/Logout'
 import CarDetails from './components/CarDetails'
+import CarEdit from './components/CarEdit'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
           <Route path={Path.Gallery} element={<Gallery />} />
           <Route path={Path.Detais} element={<CarDetails />} />
           <Route path={Path.AddCar} element={<CarCreate />} />
+          <Route path={Path.EditCar} element={<CarEdit />} />
           <Route path={Path.About} element={<About />} />
           <Route path={Path.Login} element={<Login />} />
           <Route path={Path.Logout} element={<Logout />} />

@@ -5,10 +5,11 @@ import * as commentService from '../../services/commentService'
 
 
 function CommentEditModal({ commentId, text, isOpen, onClose, onCommentUpdate }) {
-    // console.log(commentId, text);
     const [comment, setComment] = useState(text);
+    const [error, setError] = useState(false)
 
     const handleSubmit = async () => {
+        if (comment.trim() && comment.length > 0) {
         try {
             const editComment = await commentService.patch(commentId, comment)
             if (editComment) {
@@ -18,7 +19,7 @@ function CommentEditModal({ commentId, text, isOpen, onClose, onCommentUpdate })
             onClose();
         } catch (err) {
             console.log("Edit of Comment error: ", err);
-        }
+        }} else setError(true)
     };
 
     if (!isOpen) return null;
@@ -32,9 +33,11 @@ function CommentEditModal({ commentId, text, isOpen, onClose, onCommentUpdate })
                     onChange={(e) => setComment(e.target.value)}
                     placeholder="Write your comment here..."
                 />
+                {error && <p className={styles.error} >Comment cannot be empty!</p>}
                 <div>
-                    <button onClick={handleSubmit}>Edit Comment</button>
-                    <button onClick={onClose}>Close</button>
+                    <button onClick={handleSubmit}>OK</button>
+                    {/* <button onClick={onClose}>Close</button> */}
+                    <button onClick={() => { setComment(''); setError(false); onClose() }}>Close</button>
                 </div>
             </div>
         </div>

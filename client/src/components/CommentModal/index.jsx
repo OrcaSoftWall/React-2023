@@ -7,12 +7,18 @@ import * as commentService from '../../services/commentService'
 function CommentModal({ isOpen, onClose }) {
     const [comment, setComment] = useState('');
     const { carId } = useParams();
+    const [error, setError] = useState(false)
 
     const handleSubmit = async () => {
-        const newComment = await commentService.create(carId, comment)
-        console.log(newComment);
-        setComment('')
-        onClose(); // Close the modal after submitting
+        if (comment.trim() && comment.length > 0) {
+            const newComment = await commentService.create(carId, comment)
+            console.log(newComment);
+            setComment('')
+            setError(false)
+            onClose();
+        } else setError(true)
+
+
     };
 
     if (!isOpen) return null;
@@ -26,9 +32,10 @@ function CommentModal({ isOpen, onClose }) {
                     onChange={(e) => setComment(e.target.value)}
                     placeholder="Write your comment here..."
                 />
+                {error && <p className={styles.error} >Comment cannot be empty!</p>}
                 <div>
-                    <button onClick={handleSubmit}>New Comment</button>
-                    <button onClick={onClose}>Close</button>
+                    <button onClick={handleSubmit}>OK</button>
+                    <button onClick={() => { setComment(''); setError(false); onClose() }}>Close</button>
                 </div>
             </div>
         </div>

@@ -5,10 +5,6 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import * as carsService from '../../services/carsService';
 import * as commentService from '../../services/commentService';
 import AuthContext from "../../contexts/authContext";
-// import reducer from './commentReducer';
-import useForm from '../../hooks/useForm';
-// import { pathToUrl } from "../../utils/pathUtils";
-import Path from "../../paths";
 import CommentModal from '../CommentModal';
 import CarComment from '../CarComment';
 import pic from "../../images/Dash1.png"
@@ -17,7 +13,6 @@ function CarDetails() {
     const { email, username, userId } = useContext(AuthContext);
     const [car, setCar] = useState({});
     const [comments, setComments] = useState([])
-    // const [comments, dispatch] = useReducer(reducer, []);
     const { carId } = useParams();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [creator, setCreator] = useState("")
@@ -33,15 +28,6 @@ function CarDetails() {
 
         commentService.getAll(carId)
             .then(setComments);
-        // console.log(comments)
-
-        // commentService.getAll(carId)
-        //     .then((result) => {
-        //         dispatch({
-        //             type: 'GET_ALL_COMMENTS',
-        //             payload: result,
-        //         });
-        //     });
     }, [carId]);
 
     const date = new Date(car._createdOn);
@@ -82,7 +68,7 @@ function CarDetails() {
                         <hr />
                         {car._ownerId === userId && (
                             <>
-                                <Link to=""><button className={styles.button}>EDIT</button></Link>
+                                <Link to={`/cars/edit-car/${carId}`}><button className={styles.button}>EDIT</button></Link>
                                 {/* <Link to=""><button>DELETE</button></Link> */}
                                 <button className={styles.button} onClick={deleteButtonClickHandler}>DELETE</button>
                             </>
