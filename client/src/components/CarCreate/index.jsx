@@ -63,7 +63,7 @@ function CarCreate() {
                 <div className={styles.container}>
                     <h1>Add a Silk Car</h1>
                     <label htmlFor='make'>Make:</label>
-                    <input type='text' id='make' name={formValuesKeys.Make} placeholder='Car brand' value={values[formValuesKeys.Make]} onChange={onChange} />
+                    <input type='text' id='make' name={formValuesKeys.Make} placeholder='Car brand' value={values[formValuesKeys.Make]} onChange={onChange} autoFocus />
 
                     <label htmlFor='model'>Model:</label>
                     <input type='text' id='model' name={formValuesKeys.Model} placeholder='Car model' value={values[formValuesKeys.Model]} onChange={onChange} />

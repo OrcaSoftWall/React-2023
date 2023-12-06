@@ -21,7 +21,7 @@ function CommentModal({ isOpen, onClose }) {
         <div className={styles.modal}>
             <div className={styles.modalContent}>
                 <h3>New Comment:</h3>
-                <textarea
+                <textarea autoFocus
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
                     placeholder="Write your comment here..."

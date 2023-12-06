@@ -11,7 +11,7 @@ function CommentEditModal({ commentId, text, isOpen, onClose, onCommentUpdate })
     const handleSubmit = async () => {
         try {
             const editComment = await commentService.patch(commentId, comment)
-            if (onCommentUpdate) {
+            if (editComment) {
                 onCommentUpdate(commentId, comment);
             }
             setComment('')
@@ -27,7 +27,7 @@ function CommentEditModal({ commentId, text, isOpen, onClose, onCommentUpdate })
         <div className={styles.modal}>
             <div className={styles.modalContent}>
                 <h3>Edit Comment:</h3>
-                <textarea
+                <textarea autoFocus
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
                     placeholder="Write your comment here..."

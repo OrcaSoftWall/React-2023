@@ -11,26 +11,35 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
-    // const [auth, setAuth] = useState(() => {
-    //   localStorage.removeItem('accessToken');
-    //   return {};
-    // });
+
+    const [authError, setAuthError] = useState(null);
+
     const [auth, setAuth] = usePersistedState('auth', {});
     const loginSubmitHandler = async (values) => {
-        console.log(values);
-        const result = await authService.login(values.email, values.password);
-        console.log(result)
-        setAuth(result);
-        localStorage.setItem('accessToken', result.accessToken);
-        navigate(Path.Home);
+        try {
+            console.log(values);
+            const result = await authService.login(values.email, values.password);
+            console.log(result)
+            setAuth(result);
+            localStorage.setItem('accessToken', result.accessToken);
+            navigate(Path.Home);
+            setAuthError(null); // Reset any previous errors on successful login
+        } catch (error) {
+            // Handle the error, e.g., set the error message
+            setAuthError(error.message || 'Failed to log in!');
+        }
     };
 
     const registerSubmitHandler = async (values) => {
-        console.log(values);
-        const result = await authService.register(values.email, values.username, values.password);
-        setAuth(result);
-        localStorage.setItem('accessToken', result.accessToken);
-        navigate(Path.Home);
+        if (values.email && values.password && values.password === values.rePassword) {
+            console.log(values);
+            const result = await authService.register(values.email, values.username, values.password, values.rePassword);
+            setAuth(result);
+            localStorage.setItem('accessToken', result.accessToken);
+            navigate(Path.Home);
+        } else {
+            setAuthError("Password and rePassword should match!")
+        }
     }
 
     const logoutHandler = () => {
@@ -47,6 +56,7 @@ export const AuthProvider = ({ children }) => {
         email: auth.email,
         userId: auth._id,
         isAuthenticated: !!auth.accessToken,
+        authError,
     }
 
     return (

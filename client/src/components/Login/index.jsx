@@ -11,8 +11,8 @@ const loginFormKeys = {
 
 
 function Login() {
-    const { loginSubmitHandler } = useContext(AuthContext)
-    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
+    const { loginSubmitHandler, authError } = useContext(AuthContext)
+    const { values, onChange, onSubmit, errors } = useForm(loginSubmitHandler, {
         [loginFormKeys.Email]: '',
         [loginFormKeys.Password]: '',
     });
@@ -24,7 +24,7 @@ function Login() {
                 <div className={styles.container}>
                     <h1>Login</h1>
                     <label htmlFor='email'>Email:</label>
-                    <input type='email' id='email' name={loginFormKeys.Email} placeholder='user@domain.com' onChange={onChange} value={values[loginFormKeys.Email]} />
+                    <input type='email' id='email' name={loginFormKeys.Email} placeholder='user@domain.com' onChange={onChange} value={values[loginFormKeys.Email]} autoFocus />
 
                     <label htmlFor='login-pass'>Password:</label>
                     <input type='password' id='login-password' name={loginFormKeys.Password} onChange={onChange} value={values[loginFormKeys.Password]} />
@@ -33,6 +33,8 @@ function Login() {
                     <p className={styles.field}>
                         <span>Not registered yet? <Link to='/register' className={styles.link}>→ REGISTER</Link></span>
                     </p>
+                    {errors.login && <p className={styles.error} >{errors.login}</p>}
+                    {authError && <p className={styles.error} >{authError}</p>}
                 </div>
             </form>
         </section>

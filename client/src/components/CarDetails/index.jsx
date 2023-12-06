@@ -61,7 +61,7 @@ function CarDetails() {
             navigate('/cars/gallery')
         }
     }
-    console.log(car)
+    
     return (
         <div className={styles.carDetails} >
             <h1>{car.make} - {car.model}</h1>
