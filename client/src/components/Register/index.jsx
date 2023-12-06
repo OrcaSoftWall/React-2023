@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './index.module.css';
 import AuthContext from '../../contexts/authContext';
 import useForm from '../../hooks/useForm';
+import registerValidation from '../../validations/registerValidation';
 
 const registerFormKeys = {
     Email: 'email',
@@ -18,7 +19,7 @@ function Register() {
         [registerFormKeys.Username]: '',
         [registerFormKeys.Password]: '',
         [registerFormKeys.ConfirmPassword]: '',
-    })
+    }, registerValidation)
 
 
     return (
