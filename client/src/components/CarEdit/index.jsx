@@ -46,13 +46,22 @@ function CarEdit() {
             }
         }
     };
-
+    
+    const resetForm = () => {
+        setFormValues({
+            make: '',
+            model: '',
+            type: 'F1', 
+            imageURL: '',
+            summary: ''
+        })
+    }
         return (
             <section className={styles.carCreate}>
                 <form id='edit-car' onSubmit={onSubmit}>
                     <div className={styles.container}>
                         <h1>Edit Car</h1>
-                        <label htmlFor='make'>Make:</label>
+                        <label htmlFor='make'>Brand:</label>
                         <input type='text' id='make' name="make" placeholder='Car brand' value={formValues.make} onChange={onChange} autoFocus />
                         {errors.make && <p className={styles.error} >{errors.make}</p>}
 
@@ -80,7 +89,7 @@ function CarEdit() {
                         {errors.summary && <p className={styles.error} >{errors.summary}</p>}
 
                         <input className={styles.submitBtn} type='submit' value='Edit' />
-                        <input className={styles.submitBtn} type='reset' value='RESET FORM' />
+                        <input className={styles.submitBtn} type='reset' onClick={resetForm} value='RESET FORM' />
                     </div>
                 </form>
             </section>

@@ -4,6 +4,10 @@
     padding: 2rem;
 }
 
+.commentText {
+    word-wrap: break-word;
+}
+
 .comment h3 {
     text-align: center;
     margin-bottom: 2rem;

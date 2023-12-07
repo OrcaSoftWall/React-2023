@@ -59,11 +59,12 @@ function CarDetails() {
                 <p>Loading car data...</p>
             )}
             <hr />
+            <Link to={`/cars/gallery`}><button className={styles.buttonBack}>← Back</button></Link>
             <div className={styles.container}>
                 <div className={styles.slot} >
                     <img src={car.imageURL} alt={`${car.make} - ${car.model}`} />
                     <section className={styles.info} >
-                        <h4>Make: {car.make}</h4>
+                        <h4>Brand: {car.make}</h4>
                         <h4>Model: {car.model}</h4>
                         <h5>Type: {car.type}</h5>
                         <hr />
@@ -74,7 +75,6 @@ function CarDetails() {
                                 <button className={styles.button} onClick={deleteButtonClickHandler}>DELETE</button>
                             </>
                         )}
-                        <Link to={`/cars/gallery`}><button className={styles.button}>← BACK</button></Link>
                     </section>
                 </div>
                 <h4>Summary:</h4>

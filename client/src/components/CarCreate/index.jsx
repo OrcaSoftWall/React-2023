@@ -38,7 +38,7 @@ function CarCreate() {
             <form id='create' onSubmit={onSubmit}>
                 <div className={styles.container}>
                     <h1>Add a Silk Car</h1>
-                    <label htmlFor='make'>Make:</label>
+                    <label htmlFor='make'>Brand:</label>
                     <input type='text' id='make' name={formValuesKeys.Make} placeholder='Car brand' value={values[formValuesKeys.Make]} onChange={onChange} autoFocus />
                     {errors.make && <p className={styles.error} >{errors.make}</p>}
 
