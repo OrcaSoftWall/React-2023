@@ -8,6 +8,7 @@ import AuthContext from "../../contexts/authContext";
 import CommentModal from '../CommentModal';
 import CarComment from '../CarComment';
 import replaceTextEmojis from '../../validations/emojis'
+import emptyImg from '../../images/404.jpg'
 
 
 function CarDetails() {
@@ -16,7 +17,6 @@ function CarDetails() {
     const [comments, setComments] = useState([])
     const { carId } = useParams();
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [creator, setCreator] = useState("")
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -48,7 +48,7 @@ function CarDetails() {
             navigate('/cars/gallery')
         }
     }
-    
+
     return (
         <div className={styles.carDetails} >
             <h1>{car.make} - {car.model}</h1>
@@ -62,7 +62,7 @@ function CarDetails() {
             <button className={styles.buttonBack} onClick={() => navigate(-1)}>← Back</button>
             <div className={styles.container}>
                 <div className={styles.slot} >
-                    <img src={car.imageURL} alt={`${car.make} - ${car.model}`} />
+                    <img src={car.imageURL} alt={`${car.make} - ${car.model}`} onError={() => setCar({...car, imageURL:emptyImg})} />
                     <section className={styles.info} >
                         <h4>Brand: {car.make}</h4>
                         <h4>Model: {car.model}</h4>
@@ -80,12 +80,12 @@ function CarDetails() {
                 <h4>Summary:</h4>
                 <p className={styles.summary}>{car.summary && replaceTextEmojis(car.summary)}</p>
             </div>
-                {userId && (
-                    <div className={styles.newCommentButton}>
-                        <button className={styles.button} onClick={() => setIsModalOpen(true)}>New Comment</button>
-                        <CommentModal carId={carId} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-                    </div>
-                )}
+            {userId && (
+                <div className={styles.newCommentButton}>
+                    <button className={styles.button} onClick={() => setIsModalOpen(true)}>New Comment</button>
+                    <CommentModal carId={carId} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+                </div>
+            )}
             <CarComment trigger={isModalOpen === false} />
         </div>
     );
