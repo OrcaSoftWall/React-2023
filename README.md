@@ -1,10 +1,10 @@
 # React-2023: Silk Cars
 React.js Project - SoftUni.bg 
 
-Silk Cars is a project related to SoftUni's ReactJS course. It consists of two main parts - server side and client side.
+Silk Cars is a project related to SoftUni's ReactJS course. It consists of two main parts - server side and client side.          
 The app is a place for sports cars entusiasts. Here they can share pictures of supercars and comment them. 
 
-Guests can access the gallery and read the comments. 
+Guests can access the gallery and read the comments.              
 Registered users can upload and comment cars, edit and delete them.
 
 Registration is free of charge*
