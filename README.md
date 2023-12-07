@@ -1,4 +1,4 @@
-# React-2023
+# React-2023: Silk Cars
 React.js Project - SoftUni.bg 
 
 Silk Cars is a project related to SoftUni's ReactJS course. It consists of two main parts - server side and client side.
