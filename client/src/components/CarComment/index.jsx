@@ -46,7 +46,7 @@ function CarComment(trigger) {
 
     return (
         <div className={styles.comment} >
-            <h3>Comments:</h3>
+            {/* <h3>Comments:</h3> */}
             {
                 comments.toReversed().map(comment => (
                     <section key={comment._id} className={styles.info} >

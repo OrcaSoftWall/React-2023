@@ -40,7 +40,7 @@ function CarEdit() {
         if (Object.keys(validationErrors).length === 0) {
             try {
                 await carsService.edit(carId, formValues);
-                navigate('/cars/gallery');
+                navigate(`/cars/${carId}`);
             } catch (err) {
                 console.log(err);
             }

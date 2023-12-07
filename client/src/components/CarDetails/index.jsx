@@ -73,26 +73,19 @@ function CarDetails() {
                                 <button className={styles.button} onClick={deleteButtonClickHandler}>DELETE</button>
                             </>
                         )}
+                        <Link to={`/cars/gallery`}><button className={styles.button}>← BACK</button></Link>
                     </section>
                 </div>
                 <h4>Summary:</h4>
                 <p className={styles.summary}>{car.summary}</p>
+            </div>
                 {userId && (
-                    <div>
+                    <div className={styles.newCommentButton}>
                         <button className={styles.button} onClick={() => setIsModalOpen(true)}>New Comment</button>
                         <CommentModal carId={carId} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
                     </div>
                 )}
-            </div>
             <CarComment trigger={isModalOpen === false} />
-            {/* {car._ownerId === userId && (
-                <div>
-                    <button className={styles.button} onClick={() => setIsModalOpen(true)}>New Comment</button>
-                    <CommentModal carId={carId} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-                    <button className={styles.button} onClick={() => setIsModalOpen(true)}>Edit Comment</button>
-                    <CommentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-                </div>
-            )} */}
         </div>
     );
 }

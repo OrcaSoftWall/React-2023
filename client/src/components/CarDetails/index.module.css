@@ -68,5 +68,8 @@
 
 .added span {
     color: rgb(255, 168, 136);
+}
 
+.newCommentButton {
+    text-align: center;
 }
