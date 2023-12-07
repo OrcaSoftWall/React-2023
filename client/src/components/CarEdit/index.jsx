@@ -89,7 +89,7 @@ function CarEdit() {
                         {errors.summary && <p className={styles.error} >{errors.summary}</p>}
 
                         <input className={styles.submitBtn} type='submit' value='Edit' />
-                        <input className={styles.submitBtn} type='reset' onClick={resetForm} value='RESET FORM' />
+                        <input className={styles.submitBtn} type='reset' onClick={resetForm} value='Reset Form' />
                     </div>
                 </form>
             </section>

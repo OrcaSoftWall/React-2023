@@ -59,7 +59,7 @@ function CarDetails() {
                 <p>Loading car data...</p>
             )}
             <hr />
-            <Link to={`/cars/gallery`}><button className={styles.buttonBack}>← Back</button></Link>
+            <button className={styles.buttonBack} onClick={() => navigate(-1)}>← Back</button>
             <div className={styles.container}>
                 <div className={styles.slot} >
                     <img src={car.imageURL} alt={`${car.make} - ${car.model}`} />

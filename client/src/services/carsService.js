@@ -14,7 +14,7 @@ export const getOne = async (carId) => {
         load: `owner=_ownerId:users`,
         // load: `owner=_ownerId:users,username=_ownerId:users`,
     })
-    const result = await request.get(`${baseUrl}/${carId}?${query}`, );
+    const result = await request.get(`${baseUrl}/${carId}?${query}`,);
 
     return result;
 }
@@ -26,7 +26,19 @@ export const getLatest = async (amountOfCars) => {
         pageSize: amountOfCars
     })
 
-    const result = await request.get(`${baseUrl}?sortBy=_createdOn a&${query}`, );   // a or desc
+    const result = await request.get(`${baseUrl}?sortBy=_createdOn a&${query}`,);   // a or desc
+    return result;
+}
+
+export const getMyCars = async (userId, amountOfCars) => {
+    const query = new URLSearchParams({
+        where: `_ownerId="${userId}"`,
+        offset: 0,
+        pageSize: amountOfCars
+    })
+
+    const result = await request.get(`${baseUrl}?${query}`,);   
+    // const result = await request.get(`${baseUrl}?distinct=${userId}&${query}`,);   
     return result;
 }
 
@@ -42,5 +54,5 @@ export const edit = async (carId, carData) => {
     return result;
 };
 
-export const remove = async(carId) => request.remove(`${baseUrl}/${carId}`)
+export const remove = async (carId) => request.remove(`${baseUrl}/${carId}`)
 

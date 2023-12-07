@@ -20,15 +20,13 @@
 
 .header {
     background-color: rgb(5, 5, 5);
-    height: 20vh;
+    height: 21vh;
     width: 100%;
     overflow: hidden;
     color: azure;
     position: relative;
-    /* padding-top: 10px; */
-
     position: sticky;
-    top: -120px;
+    top: -13vh;
     z-index: 999;
 }
 
