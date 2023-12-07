@@ -3,14 +3,21 @@ import { useState, useEffect } from "react";
 export default function useForm(submitHandler, initialValues, registerValidation) {
     const [values, setValues] = useState(initialValues);
     const [errors, setErrors] = useState({});
-
+    
+    
     const onChange = (e) => {
-          setValues(state => ({
+        setValues(state => ({
             ...state,
             [e.target.name]: e.target.value
         }))
     }
-
+    
+        useEffect(() => {
+            if (initialValues) {
+                setValues(initialValues);
+            }
+        }, [initialValues]);
+    
     const onSubmit = (e) => {
         e.preventDefault();
         const validationErrors = registerValidation ? registerValidation(values) : {};
