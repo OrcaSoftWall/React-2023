@@ -1,5 +1,6 @@
 import styles from './index.module.css';
 import { Link } from "react-router-dom";
+import replaceTextEmojis from '../../validations/emojis'
 
 function Card({
     _id,
@@ -19,7 +20,7 @@ function Card({
                     <h6>Model: {model}</h6>
                     <h6>Type: {type}</h6>
                     <img src={imageURL} alt={`${make} - ${model}`} />
-                    <p>{summary}</p>
+                    <p>{summary && replaceTextEmojis(summary)}</p>
                 </div>
             </Link>
         </div>

@@ -7,7 +7,8 @@ import * as commentService from '../../services/commentService';
 import AuthContext from "../../contexts/authContext";
 import CommentModal from '../CommentModal';
 import CarComment from '../CarComment';
-import pic from "../../images/Dash1.png"
+import replaceTextEmojis from '../../validations/emojis'
+
 
 function CarDetails() {
     const { email, username, userId } = useContext(AuthContext);
@@ -77,7 +78,7 @@ function CarDetails() {
                     </section>
                 </div>
                 <h4>Summary:</h4>
-                <p className={styles.summary}>{car.summary}</p>
+                <p className={styles.summary}>{car.summary && replaceTextEmojis(car.summary)}</p>
             </div>
                 {userId && (
                     <div className={styles.newCommentButton}>

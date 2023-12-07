@@ -5,15 +5,13 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import * as commentService from '../../services/commentService';
 import AuthContext from "../../contexts/authContext";
 import CommentEditModal from '../CommentEditModal';
-
+import replaceTextEmojis from '../../validations/emojis'
 
 function CarComment(trigger) {
     const { userId } = useContext(AuthContext);
     const [comments, setComments] = useState([])
-    // const [comments, dispatch] = useReducer(reducer, []);
     const { carId } = useParams();
     const [removed, setRemoved] = useState(false);
-    const navigate = useNavigate()
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingCommentId, setEditingCommentId] = useState(null); //
 
@@ -21,13 +19,6 @@ function CarComment(trigger) {
         commentService.getAll(carId)
             .then(setComments);
 
-        // commentService.getAll(carId)
-        //     .then((result) => {
-        //         dispatch({
-        //             type: 'GET_ALL_COMMENTS',
-        //             payload: result,
-        //         });
-        //     });
     }, [carId, trigger, removed]);
 
     const deleteButtonClickHandler = async (commentId) => {
@@ -50,8 +41,8 @@ function CarComment(trigger) {
             {
                 comments.toReversed().map(comment => (
                     <section key={comment._id} className={styles.info} >
-                        <p className={styles.meta}><span>{comment.owner.username || comment.owner.email}</span> said at {`${new Date(comment._createdOn).toLocaleDateString()} ${new Date(comment._createdOn).toLocaleTimeString()}`}:</p>
-                        <h6>{comment.text}</h6>
+                        <p className={styles.meta}><span>{comment.owner.username || comment.owner.email}</span> said on {`${new Date(comment._createdOn).toLocaleDateString()} at ${new Date(comment._createdOn).toLocaleTimeString()}`}:</p>
+                        <h6>{comment.text && replaceTextEmojis(comment.text)}</h6>
                         {comment._ownerId === userId && (
                             <div className={styles.controlsWrapper}>
                                 <div>
