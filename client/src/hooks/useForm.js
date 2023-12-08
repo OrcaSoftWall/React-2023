@@ -16,8 +16,8 @@ export default function useForm(submitHandler, initialValues, registerValidation
         e.preventDefault();
         const validationErrors = registerValidation ? registerValidation(values) : {};
         setErrors(validationErrors);
-        console.log('values to submit with useForm: ', values);
-        console.log('validation errors:   ', validationErrors);
+        // console.log('values to submit with useForm: ', values);
+        // console.log('validation errors:   ', validationErrors);
         if (Object.keys(validationErrors).length === 0) {
             submitHandler(values)
         }

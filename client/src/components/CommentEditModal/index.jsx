@@ -1,6 +1,5 @@
 import styles from './index.module.css';
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
 import * as commentService from '../../services/commentService'
 
 
@@ -16,7 +15,7 @@ function CommentEditModal({ commentId, text, isOpen, onClose, onCommentUpdate })
                 onCommentUpdate(commentId, comment);
             }
             setComment('')
-            onClose();
+            onClose()
         } catch (err) {
             console.log("Edit of Comment error: ", err);
         }} else setError(true)
@@ -36,7 +35,6 @@ function CommentEditModal({ commentId, text, isOpen, onClose, onCommentUpdate })
                 {error && <p className={styles.error} >Comment cannot be empty!</p>}
                 <div>
                     <button onClick={handleSubmit}>OK</button>
-                    {/* <button onClick={onClose}>Close</button> */}
                     <button onClick={() => { setComment(''); setError(false); onClose() }}>Close</button>
                 </div>
             </div>

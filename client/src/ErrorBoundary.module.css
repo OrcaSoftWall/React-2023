@@ -1,0 +1,17 @@
+.notFound {
+    background: no-repeat 0px  url("../../images/404.jpg");  
+    background-size: cover;
+    min-height: 65vh;
+}
+
+.notFound h1 {
+    text-align: center;
+    font-size: 8rem;
+    color:azure;
+}
+
+.notFound h2 {
+    text-align: center;
+    font-size: 4rem;
+    color:azure;
+}

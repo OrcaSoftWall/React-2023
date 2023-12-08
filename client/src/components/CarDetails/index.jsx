@@ -34,9 +34,8 @@ function CarDetails() {
     const date = new Date(car._createdOn);
     const today = new Date()
     const age = Math.floor((today - date) / 3600000 / 24)
-    const yesterday = new Date(new Date().setDate(new Date().getDate() - 1))
 
-    const safeAccessproperties = (car) => {
+    const safeAccessProperty = (car) => {
         return car && car.owner ? (car.owner.username || car.owner.email) : 'Loading...';
     }
 
@@ -54,7 +53,7 @@ function CarDetails() {
             <h1>{car.make} - {car.model}</h1>
             {/* <p className={styles.added}>Added by <span>{`${username}`}</span> on {`${date.toLocaleDateString()}`} at {`${date.toLocaleTimeString()}`}</p> */}
             {car ? (
-                <p className={styles.added}>Added by <span>{`${safeAccessproperties(car)}`}</span>  {age < 1 ? 'today' : `${age} days ago`}</p>
+                <p className={styles.added}>Added by <span>{`${safeAccessProperty(car)}`}</span>  {age < 1 ? 'today' : `${age} days ago`}</p>
             ) : (
                 <p>Loading car data...</p>
             )}
@@ -71,7 +70,6 @@ function CarDetails() {
                         {car._ownerId === userId && (
                             <>
                                 <Link to={`/cars/edit-car/${carId}`}><button className={styles.button}>EDIT</button></Link>
-                                {/* <Link to=""><button>DELETE</button></Link> */}
                                 <button className={styles.button} onClick={deleteButtonClickHandler}>DELETE</button>
                             </>
                         )}

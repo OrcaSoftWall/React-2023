@@ -12,7 +12,7 @@ function CommentModal({ isOpen, onClose }) {
     const handleSubmit = async () => {
         if (comment.trim() && comment.length > 0) {
             const newComment = await commentService.create(carId, comment)
-            console.log(newComment);
+            // console.log(newComment);
             setComment('')
             setError(false)
             onClose();

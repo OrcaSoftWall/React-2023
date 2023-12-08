@@ -18,7 +18,6 @@ function CarComment(trigger) {
     useEffect(() => {
         commentService.getAll(carId)
             .then(setComments);
-
     }, [carId, trigger, removed]);
 
     const deleteButtonClickHandler = async (commentId) => {
@@ -41,7 +40,7 @@ function CarComment(trigger) {
             {
                 comments.toReversed().map(comment => (
                     <section key={comment._id} className={styles.info} >
-                        <p className={styles.meta}><span>{comment.owner.username || comment.owner.email}</span> said on {`${new Date(comment._createdOn).toLocaleDateString()} at ${new Date(comment._createdOn).toLocaleTimeString()}`}:</p>
+                        <p className={styles.meta}><span>{comment.owner.username || comment.owner.email}</span> said on {`${new Date(comment._createdOn).toLocaleDateString()} at ${new Date(comment._createdOn).toLocaleTimeString()}`} {comment._updatedOn && "(edited)"}:</p>
                         <h6 className={styles.commentText}>{comment.text && replaceTextEmojis(comment.text)}</h6>
                         {comment._ownerId === userId && (
                             <div className={styles.controlsWrapper}>
@@ -55,7 +54,7 @@ function CarComment(trigger) {
                                             onCommentUpdate={(updatedCommentId, updatedText) => {
                                                 setComments(currentComments => currentComments.map(comment =>
                                                     comment._id === updatedCommentId
-                                                        ? { ...comment, text: updatedText }
+                                                        ? { ...comment, text: updatedText, _updatedOn:true }
                                                         : comment
                                                 ));
                                             }}
