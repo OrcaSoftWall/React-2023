@@ -38,7 +38,6 @@ export const getMyCars = async (userId, amountOfCars) => {
     })
 
     const result = await request.get(`${baseUrl}?${query}`,);   
-    // const result = await request.get(`${baseUrl}?distinct=${userId}&${query}`,);   
     return result;
 }
 
