@@ -35,11 +35,11 @@ function Register() {
                     <input type='text' id='username' name='username' placeholder='' onChange={onChange} value={values[registerFormKeys.Username]} />
 
                     <label htmlFor='register-pass'>Password:</label>
-                    <input type='password' id='register-password' name='password' onChange={onChange} value={values[registerFormKeys.Password]} />
+                    <input type='password' id='register-pass' name='password' onChange={onChange} value={values[registerFormKeys.Password]} />
                     {errors.password && <p className={styles.error} >{errors.password}</p>}
 
                     <label htmlFor='re-pass'>Confirm Password:</label>
-                    <input type='password' id='re-password' name='rePassword' onChange={onChange} value={values[registerFormKeys.ConfirmPassword]} />
+                    <input type='password' id='re-pass' name='rePassword' onChange={onChange} value={values[registerFormKeys.ConfirmPassword]} />
                     {errors.rePassword && <p className={styles.error} >{errors.rePassword}</p>}
 
                     <input className={styles.submitBtn} type='submit' value='Register' />
