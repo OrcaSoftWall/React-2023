@@ -16,8 +16,8 @@ export const getAll = async (carId) => {
 
 export const getOne = async (commentId) => {
     const result = await request.get(`${baseUrl}/${commentId}`,);
-    console.log("CommentID: ", commentId);
-    console.log("Comment Reply from backend: ", result);
+    // console.log("CommentID: ", commentId);
+    // console.log("Comment Reply from backend: ", result);
     return result;
 }
 

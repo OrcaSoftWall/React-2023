@@ -17,9 +17,9 @@ export const AuthProvider = ({ children }) => {
     const [auth, setAuth] = usePersistedState('auth', {});
     const loginSubmitHandler = async (values) => {
         try {
-            console.log(values);
+            // console.log(values);
             const result = await authService.login(values.email, values.password);
-            console.log(result)
+            // console.log(result)
             setAuth(result);
             localStorage.setItem('accessToken', result.accessToken);
             navigate(Path.Home);

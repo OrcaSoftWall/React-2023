@@ -8,7 +8,7 @@ import Path from '../../paths';
 
 function Header() {
     const { isAuthenticated, username, userId } = useContext(AuthContext);
-    console.log(isAuthenticated, username, userId)
+    // console.log(isAuthenticated, username, userId)
     return (
         <div className={styles.header}>
             {/* <img className={styles.banner} src={banner} alt="sports cars" /> */}

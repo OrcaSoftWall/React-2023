@@ -16,10 +16,10 @@ const formValuesKeys = {
 function CarCreate() {
     const navigate = useNavigate();
     const { values, onChange, onSubmit, errors } = useForm(async (values) => {
-        console.log("CarCreate Function values: ", values);
+        // console.log("CarCreate Function values: ", values);
         try {
             const result = await carsService.create(values);
-            console.log(result)
+            // console.log(result)
             navigate('/cars/gallery');
         } catch (err) {
             // Error notification
