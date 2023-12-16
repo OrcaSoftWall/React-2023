@@ -5,10 +5,10 @@ import { BrowserRouter } from 'react-router-dom'
 import ErrorBoundary from './ErrorBoundary.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <BrowserRouter>
-        <ErrorBoundary>
+    <ErrorBoundary>
+        <BrowserRouter>
             <App />
-        </ErrorBoundary>
-    </BrowserRouter>
+        </BrowserRouter>
+    </ErrorBoundary>
 
 )
