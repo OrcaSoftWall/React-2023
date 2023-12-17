@@ -9,13 +9,13 @@ import CarCreate from './components/CarCreate'
 import Login from './components/Login'
 import About from './components/About'
 import Register from './components/Register'
+import Logout from './components/Logout'
+import CarDetails from './components/CarDetails'
+import CarEdit from './components/CarEdit'
 // import AuthContext, { AuthProvider } from './contexts/authContext'
 import { AuthProvider } from './contexts/authContext'
 import Path from './paths';
 
-import Logout from './components/Logout'
-import CarDetails from './components/CarDetails'
-import CarEdit from './components/CarEdit'
 
 function App() {
 
